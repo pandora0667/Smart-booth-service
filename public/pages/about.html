@@ -27,46 +27,23 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li class='active'><a href="map.html">Map</a></li>
-            <li><a href="about.html">About</a></li>
+            <li><a href="map.html">Map</a></li>
+            <li class='active'><a href="about.html">About</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </div>
     <div class='container-fluid'>
-      <div class='container-location'>
-        <h2 >Smoking-booth Location</h2>
+      <div class='row'>
+        <div class='col-md-12'>
+          <h1>About</h1>
+          <p>This is a demo of <a href='http://derekeder.com'>Derek Eder's</a> <a href='http://derekeder.com/searchable_map_template/'>Searchable Map Template</a> using Google <a href='http://support.google.com/fusiontables/answer/2571232?hl=en&ref_topic=1652595'>Fusion Tables</a>.</p>
+          <p>Use this page to give even more context to your map.</p>
+        </div>
       </div>
     </div>
 
-    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=OJkAR9OhJRmx89n3TfUj&submodules=geocoder"></script>
-    <div id="map" style="height: 800px">
-    <script type='text/javascript'>
-        let HOME_PATH = window.HOME_PATH || '.';
-        let cityhall = new naver.maps.LatLng(37.3595704, 127.105399),
-            map = new naver.maps.Map('map', {
-                center: cityhall,
-                zoom: 10
-            });
-//
-//        var infowindow = new naver.maps.InfoWindow({
-//            maxWidth: 180,
-//            backgroundColor: "#eee",
-//            borderColor: "#2db400",
-//            borderWidth: 2,
-//            anchorSize: new naver.maps.Size(30, 30),
-//            anchorSkew: true,
-//            anchorColor: "#eee",
-//            pixelOffset: new naver.maps.Point(20, -20)
-//        });
-
-        let marker = new naver.maps.Marker({
-            position: new naver.maps.LatLng(37.3595704, 127.105399),
-            map: map
-        });
-
-//        infowindow.open(map, marker);
-    </script>
-    </div>
+    <script type="text/javascript" src="../js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="../js/bootstrap_map.min.js"></script>
   </body>
 </html>
