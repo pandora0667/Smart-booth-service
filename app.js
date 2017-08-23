@@ -4,21 +4,20 @@
 const express = require('express');
 const app = express();
 const vidStreamer = require('vid-streamer'); //비디오 스트리밍
-
-const path = require('path');
 const bodyParser = require('body-parser');
+const path = require('path');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-
 app.use('/', express.static(__dirname + '/public'));
 
+
 app.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname + '/public/pages/login.html'));
+    res.sendfile('/public/pages/login.html');
 });
 
 app.get('/monitoring', function (req, res) {
-    res.sendFile(path.join(__dirname + '/public/pages/index.html'))
+    res.sendFile(path.join(__dirname + '/public/pages/index.html'));
 });
 
 app.post('/login', function (req, res) {
