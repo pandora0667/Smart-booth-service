@@ -48,24 +48,33 @@
                 center: cityhall,
                 zoom: 10
             });
-//
-//        var infowindow = new naver.maps.InfoWindow({
-//            maxWidth: 180,
-//            backgroundColor: "#eee",
-//            borderColor: "#2db400",
-//            borderWidth: 2,
-//            anchorSize: new naver.maps.Size(30, 30),
-//            anchorSkew: true,
-//            anchorColor: "#eee",
-//            pixelOffset: new naver.maps.Point(20, -20)
-//        });
+
+        let contentString = [
+            '<div style="text-align: center">',
+            '   <h4>Smoke-booth</h4>',
+            '   <p>한밭대학교 <br />',
+            '   </p>',
+            '</div>'
+        ].join('');
+
+        let infowindow = new naver.maps.InfoWindow({
+            maxWidth: 180,
+            backgroundColor: "#eee",
+            borderColor: "#2db400",
+            borderWidth: 2,
+            anchorSize: new naver.maps.Size(30, 30),
+            anchorSkew: true,
+            anchorColor: "#eee",
+            pixelOffset: new naver.maps.Point(20, -20),
+            content:contentString
+        });
 
         let marker = new naver.maps.Marker({
             position: new naver.maps.LatLng(37.3595704, 127.105399),
             map: map
         });
 
-//        infowindow.open(map, marker);
+        infowindow.open(map, marker);
     </script>
     </div>
   </body>
