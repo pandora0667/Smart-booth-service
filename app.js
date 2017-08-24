@@ -5,7 +5,6 @@ const express = require('express');
 const app = express();
 const vidStreamer = require('vid-streamer'); //비디오 스트리밍
 const bodyParser = require('body-parser');
-const path = require('path');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -17,17 +16,20 @@ app.get('/', function (req, res) {
 });
 
 app.get('/monitoring', function (req, res) {
-    res.sendFile(path.join(__dirname + '/public/pages/index.html'));
+    res.sendFile((__dirname + '/public/pages/admin.html'));
 });
 
+let user2 = {
+    username: '',
+    password: '',
+    email: '',
+    tel: ''
+};
+
 app.post('/login', function (req, res) {
-    let user = {
-        username: 'wisoft',
-        password: 'wisoft123',
-    };
     let username = req.body.username;
     let password = req.body.password;
-    if(username === user.username && password === user.password) {
+    if(user2.username === user.username && user2.password === user.password) {
        res.redirect('/monitoring');
     } else {
         res.send('Who are you? <a href ="/">login</a>');
@@ -35,12 +37,30 @@ app.post('/login', function (req, res) {
     console.log(username + ", " + password);
 });
 
-app.get('/kiosk', function (req, res) {
-    res.sendFile(path.join(__dirname + '/public/pages/kiosk.html'))
+
+app.post('/register', function (req, res) {
+    let user2 = {
+        username: '',
+        password: '',
+        email: '',
+        tel: ''
+    };
+
+    user2.username = req.body.username;
+    user2.password = req.body.password;
+    user2.email = req.body.email;
+    user2.tel = req.body.tel;
+
+    console.log(user2.username + "," + user2.password + "," + user2.email + "," + user2.tel )
+    res.redirect('/login');
 });
 
+// app.get('/kiosk', function (req, res) {
+//     res.sendFile((__dirname + '/public/pages/kiosk.html'))
+// });
+
 app.get('/map', function (req, res) {
-    res.sendFile(path.join(__dirname + '/public/pages/map.html'))
+    res.sendFile((__dirname + '/public/pages/map.html'))
 });
 
 app.listen(3000, function () {
