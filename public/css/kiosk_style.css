@@ -513,7 +513,7 @@ header {
 }
 .cleancode_block .nav-tabs li {
 	margin:0;
-	padding:0 15px;
+	padding:0 10px;
 }
 .cleancode_block .nav-tabs li a {
 	width:170px;
@@ -595,8 +595,10 @@ header {
 
 
 /* __________ Multi Purpose __________ */
-.purpose_block {padding:72px 0 0;}
-
+.purpose_block {padding:40px 0 0; text-align: center;}
+.purpose_block h2 {
+	margin-bottom: 60px;
+ }
 .purpose_block p {
 	margin-bottom:26px;
 	font-weight:300;
@@ -638,6 +640,10 @@ header {
 
 .purpose_block .ipad_img1 {margin-top:-116px;}
 
+
+#map2 { padding-top:40px;
+	padding-bottom: 40px;
+height: 600px;}
 
 
 

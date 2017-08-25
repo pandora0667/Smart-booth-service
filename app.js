@@ -19,45 +19,34 @@ app.get('/monitoring', function (req, res) {
     res.sendFile((__dirname + '/public/pages/admin.html'));
 });
 
-let user2 = {
-    username: '',
-    password: '',
-    email: '',
-    tel: ''
-};
 
 app.post('/login', function (req, res) {
+    let user = {
+        username:'wisoft',
+        password:'wisoft123'
+    };
     let username = req.body.username;
     let password = req.body.password;
-    if(user2.username === user.username && user2.password === user.password) {
-       res.redirect('/monitoring');
+
+    if(req.body.email === undefined) {
+        if (user.username === username && user.password === password) {
+            res.redirect('/monitoring');
+        } else {
+            res.send('Who are you? <a href ="/">login</a>');
+        }
     } else {
-        res.send('Who are you? <a href ="/">login</a>');
+        let email = req.body.email;
+        let tel = req.body.tel;
+
+        //회원가입 DB 저장
     }
     console.log(username + ", " + password);
 });
 
 
-app.post('/register', function (req, res) {
-    let user2 = {
-        username: '',
-        password: '',
-        email: '',
-        tel: ''
-    };
-
-    user2.username = req.body.username;
-    user2.password = req.body.password;
-    user2.email = req.body.email;
-    user2.tel = req.body.tel;
-
-    console.log(user2.username + "," + user2.password + "," + user2.email + "," + user2.tel )
-    res.redirect('/login');
+app.get('/kiosk', function (req, res) {
+    res.sendFile((__dirname + '/public/pages/kiosk.html'))
 });
-
-// app.get('/kiosk', function (req, res) {
-//     res.sendFile((__dirname + '/public/pages/kiosk.html'))
-// });
 
 app.get('/map', function (req, res) {
     res.sendFile((__dirname + '/public/pages/map.html'))
