@@ -17,6 +17,9 @@
     <link href="../css/kiosk_style.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="../css/bootstrap_map.min.css"/>
     <link rel="stylesheet" href="../css/custom.css"/>
+    <!-- Socket.io -->
+    <script src="http://localhost:5002/socket.io/socket.io.js"></script>
+
 
     <!-- FONTS -->
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500italic,700,500,700italic,900,900italic' rel='stylesheet' type='text/css'>
@@ -72,13 +75,25 @@
     <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=OJkAR9OhJRmx89n3TfUj&submodules=geocoder"></script>
     <div id="map3" style="height: 800px">
     <script type='text/javascript'>
+      let lat = 0;
+      let lon = 0;
         let HOME_PATH = window.HOME_PATH || '.';
-        let hanbatUniversity = new naver.maps.LatLng(36.3507993, 127.30061079999996),
-            map = new naver.maps.Map('map3', {
-                center: hanbatUniversity,
-                zoom: 10
-            });
+        let socket = io.connect('http://localhost:5002/');
+        socket.on('connected', function (data) {
+            console.log('Connected received : ', data);
+        });
 
+        socket.on('gps', function (data) {
+            let booth = JSON.parse(data);
+            lat = booth.lat;
+            lon = booth.lon;
+            let hanbatUniversity = new naver.maps.LatLng(lat, lon),
+                map = new naver.maps.Map('map3', {
+                    center: hanbatUniversity,
+                    zoom: 13
+                });
+
+        });
         let contentString = [
             '<div style="text-align: center">',
             '   <h4>Smoke-booth</h4>',
@@ -100,7 +115,7 @@
         });
 
         let marker = new naver.maps.Marker({
-            position: new naver.maps.LatLng(36.3507993, 127.30061079999996),
+            position: new naver.maps.LatLng(lat, lon),
             map: map
         });
 
