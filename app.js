@@ -1,13 +1,15 @@
 /**
  * Created by user on 2017-08-23.
  */
+'use strict';
 const express = require('express');
 const app = express();
 const vidStreamer = require('vid-streamer'); //비디오 스트리밍
 const bodyParser = require('body-parser');
+const tcp = require('./tcp');
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({extended: false}));
 app.use('/', express.static(__dirname + '/public'));
 
 
@@ -19,28 +21,18 @@ app.get('/monitoring', function (req, res) {
     res.sendFile((__dirname + '/public/pages/admin.html'));
 });
 
+app.post('/login', async (req, res) => {
 
-app.post('/login', function (req, res) {
-    let user = {
-        username:'wisoft',
-        password:'wisoft123'
-    };
-    let username = req.body.username;
-    let password = req.body.password;
+    if (req.body.email === undefined) {
+        let login = {code: 'login', username: req.body.username, password: req.body.password};
+        let test = await tcp.socket(login);
+        console.log('return :' + test);
 
-    if(req.body.email === undefined) {
-        if (user.username === username && user.password === password) {
-            res.redirect('/monitoring');
-        } else {
-            res.send('Who are you? <a href ="/">login</a>');
-        }
+        res.redirect('/monitoring');
     } else {
-        let email = req.body.email;
-        let tel = req.body.tel;
-
-        //회원가입 DB 저장
+        let sign = {code: 'sign', username: req.body.username, password: req.body.password, email: req.body.email, tel: req.body.tel};
+        await tcp.socket(sign);
     }
-    console.log(username + ", " + password);
 });
 
 
