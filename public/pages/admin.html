@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Bootstrap Admin Theme</title>
+    <title>Smart-Booth Admin</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -25,6 +25,9 @@
 
     <!-- Custom Fonts -->
     <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- Socket.io -->
+    <script src="http://203.230.100.177:5002/socket.io/socket.io.js"></script>
+
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -377,6 +380,31 @@
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
+
+
+            <!-- Socket.io TEST 여기서부터 눈갱주의 -->
+            <p><input type="text" class="form-control input-lg" id='kiosk' value="." style="text-align:center; font-size: 3rem;"><br>
+            <p><input type="text" class="form-control input-lg" id='booth' value="." style="text-align:center; font-size: 3rem;"><br>
+            <p><input type="text" class="form-control input-lg" id='trash' value="." style="text-align:center; font-size: 3rem;"><br>
+
+            <script type="text/javascript">
+                let socket = io.connect('http://203.230.100.177:5002');
+                socket.on('connected', function (data) {
+                    console.log('Connected, I received : ', data);
+                });
+                socket.on('kiosk', function (data) {
+                    $("#kiosk").val(data);
+                });
+                socket.on('booth', function (data) {
+                    $("#booth").val(data);
+                });
+                socket.on('trash', function (data) {
+                    $("#trash").val(data);
+                });
+            </script>
+
+            <!-- 눈갱 끝남 어서 눈 정화하고 오세요....-->
+
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-3 col-md-6">
@@ -387,8 +415,8 @@
                                     <i class="fa fa-comments fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">26</div>
-                                    <div>New Comments!</div>
+                                    <div class="huge">30</div>
+                                    <div>Kiosk Air Quality</div>
                                 </div>
                             </div>
                         </div>
@@ -410,7 +438,7 @@
                                 </div>
                                 <div class="col-xs-9 text-right">
                                     <div class="huge">12</div>
-                                    <div>New Tasks!</div>
+                                    <div>Smoking booth Air Quality</div>
                                 </div>
                             </div>
                         </div>
@@ -432,7 +460,7 @@
                                 </div>
                                 <div class="col-xs-9 text-right">
                                     <div class="huge">124</div>
-                                    <div>New Orders!</div>
+                                    <div>Trash</div>
                                 </div>
                             </div>
                         </div>
