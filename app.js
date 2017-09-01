@@ -22,17 +22,24 @@ app.get('/monitoring', function (req, res) {
 });
 
 app.post('/login', async (req, res) => {
-
-    if (req.body.email === undefined) {
-        let login = {code: 'login', username: req.body.username, password: req.body.password};
-        let test = await tcp.send(login);
-        console.log('return :' + test);
-
+    let login = {code: 'login', username: req.body.username, password: req.body.password};
+    if (await tcp.send(login) === 'true')
         res.redirect('/monitoring');
-    } else {
-        let sign = {code: 'sign', username: req.body.username, password: req.body.password, email: req.body.email, tel: req.body.tel};
-        // await tcp.socket(sign);
-    }
+    else
+        res.send('Login Failed');
+});
+
+app.post('/register', async (req, res) => {
+    let sign = {
+        code: 'sign',
+        username: req.body.username,
+        password: req.body.password,
+        email: req.body.email,
+        tel: req.body.tel
+    };
+
+    if (await tcp.send(sign) !== 'false')
+        res.send('회원가입에 성공했습니다. ')
 });
 
 

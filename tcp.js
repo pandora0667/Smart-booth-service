@@ -23,16 +23,17 @@ exports.send = async (msg) => {
 };
 
 const writeData = (msg) => {
+    console.log('Data send');
     server.write(JSON.stringify(msg));
 };
 
 const receive = () => {
+    console.log('Data receive');
     return new Promise(resolve => {
         server.on('data', function (data) {
             let re = /\0/g;
             let str = data.toString().replace(re, '');
             let msg = JSON.parse(str);
-            console.log('----' + msg.status);
             if (msg.status !== undefined) {
                 resolve(msg.status);
             }
