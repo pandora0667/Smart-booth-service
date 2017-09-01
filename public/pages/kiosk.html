@@ -260,7 +260,7 @@
                                 console.log('Connected received : ', data);
                             });
 
-                            let marker;
+
                             socket.on('gps', function (data) {
 								let booth = JSON.parse(data);
                                 let cityhall = new naver.maps.LatLng(booth.lat, booth.lon),
@@ -268,7 +268,7 @@
                                         center: cityhall,
                                         zoom: 12
                                     });
-                                marker = marker = new naver.maps.Marker({
+                                marker = new naver.maps.Marker({
                                     position: new naver.maps.LatLng(booth.lat, booth.lon),
                                     map: map
                                 });

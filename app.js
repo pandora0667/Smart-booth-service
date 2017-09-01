@@ -26,7 +26,7 @@ app.post('/login', async (req, res) => {
     if (await tcp.send(login) === 'true')
         res.redirect('/monitoring');
     else
-        res.send('Login Failed');
+        res.sendFile('/public/pages/login_fail.html');
 });
 
 app.post('/register', async (req, res) => {
