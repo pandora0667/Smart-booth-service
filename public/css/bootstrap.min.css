@@ -280,7 +280,7 @@ body {
 input, button, select, textarea {
     font-family: inherit;
     font-size: inherit;
-    line-height: inherit
+    line-height: inherit;
 }
 
 button, input, select[multiple], textarea {
@@ -4928,6 +4928,10 @@ a.list-group-item:hover, a.list-group-item:focus {
     border-top-left-radius: 3px
 }
 
+.panel-heading > .input {
+    color:white;
+}
+
 .panel-title {
     margin-top: 0;
     margin-bottom: 0;
@@ -4989,6 +4993,7 @@ a.list-group-item:hover, a.list-group-item:focus {
 .panel-default > .panel-footer + .panel-collapse .panel-body {
     border-bottom-color: #ddd
 }
+
 
 .panel-primary {
     border-color: #428bca
