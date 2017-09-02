@@ -7,6 +7,7 @@ const app = express();
 const vidStreamer = require('vid-streamer'); //비디오 스트리밍
 const bodyParser = require('body-parser');
 const tcp = require('./tcp');
+const dialog = require('dialog');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
@@ -25,8 +26,11 @@ app.post('/login', async (req, res) => {
     let login = {code: 'login', username: req.body.username, password: req.body.password};
     if (await tcp.send(login) === 'true')
         res.redirect('/monitoring');
-    else
-        res.sendFile('/public/pages/login_fail.html');
+    else {
+        dialog.info('입력하신 정보가 잘못 되었습니다. \n로그인을 다시 시도해주십시오.', 'login_fail', function (exitcode) {
+        });
+        res.redirect('/'); //
+    }
 });
 
 app.post('/register', async (req, res) => {
