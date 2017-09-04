@@ -3,7 +3,7 @@ const net = require('net');
 let server;
 
 exports.getConnection = () => {
-    server = net.connect({port: 5001, host: '203.230.100.177'}, function () {
+    server = net.connect({port: 5001, host: 'jusk2.asuscomm.com'}, function () {
         console.log('Connected ');
         console.log('   local = %s:%s', this.localAddress, this.localPort);
         console.log('   remote = %s:%s', this.remoteAddress, this.remotePort);

@@ -4,7 +4,7 @@
 'use strict';
 const express = require('express');
 const app = express();
-const vidStreamer = require('vid-streamer'); //비디오 스트리밍
+// const vidStreamer = require('vid-streamer'); //비디오 스트리밍
 const bodyParser = require('body-parser');
 const tcp = require('./tcp');
 const dialog = require('dialog');
