@@ -37,7 +37,7 @@ body {
   position: relative;
   background: #ffffff;
   max-width: 500px;
-  max-height: 400px;
+  max-height: 450px;
   height: 100%;
   width: 100%;
   border-top: 5px solid #33b5e5;
@@ -84,9 +84,10 @@ body {
   display: none;
   max-height: 300px;
   height: 100%;
-  padding-top: 100px;
+  padding-top: 50px;
   padding-right: 100px;
   padding-left: 100px;
+  padding-bottom: 60px;
 }
 .form-module .form:nth-child(2) {
   display: block;
