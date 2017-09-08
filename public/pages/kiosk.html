@@ -275,23 +275,23 @@
 
 
                                 let contentString = [
-                                    '<div style="text-align: center">',
-                                    '   <h4>Smoke-booth</h4>',
-                                    '   <p>한밭대학교 <br />',
-                                    '   </p>',
+                                    '<div style="width: 230px; height: 130px; padding:0 10px">',
+                                    '<h4 style="text-align: center">Smoke-booth</h4>',
+                                    '<p style="font-size: small">대전광역시 유성구 동서대로 125 S5동</p>',
+                                    '<p style="font-size: small"> 한밭대학교 S5동</p>',
+                                    `<p style="font-size: small">연락처: 010-4494-6567</p>`,
                                     '</div>'
                                 ].join('');
 
                                 let infowindow = new naver.maps.InfoWindow({
-                                    maxWidth: 180,
                                     backgroundColor: "#eee",
-                                    borderColor: "#2db400",
-                                    borderWidth: 2,
-                                    anchorSize: new naver.maps.Size(30, 30),
+                                    borderColor: "black",
+                                    borderWidth: 1,
+                                    anchorSize: new naver.maps.Size(20, 0),
                                     anchorSkew: true,
                                     anchorColor: "#eee",
-                                    pixelOffset: new naver.maps.Point(20, -20),
-                                    content:contentString
+                                    pixelOffset: new naver.maps.Point(0, -30),
+                                    content: contentString
                                 });
 
                                 infowindow.open(map, marker);
