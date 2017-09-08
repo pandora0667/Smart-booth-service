@@ -30,6 +30,8 @@
 	overflow: hidden;
 	position: relative;
 	width: 100%;
+	padding-left:380px;
+	padding-right: 380px;
 }
 .owl-carousel .owl-wrapper-outer.autoHeight{
 	-webkit-transition: height 500ms ease-in-out;
@@ -40,6 +42,8 @@
 }
 	
 .owl-carousel .owl-item{
+	margin-left: 50px;
+	margin-right: 50px;
 	float: left;
 }
 .owl-controls .owl-page,
