@@ -15,7 +15,7 @@ app.use('/', express.static(__dirname + '/public'));
 tcp.getConnection();
 
 app.get('/', function (req, res) {
-    res.sendfile('/public/pages/login.html');
+    res.sendfile((__dirname + '/public/pages/login.html');
 });
 
 app.get('/monitoring', function (req, res) {
