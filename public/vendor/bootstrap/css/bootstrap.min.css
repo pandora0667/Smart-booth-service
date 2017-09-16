@@ -3127,7 +3127,7 @@ select[multiple].input-sm, textarea.input-sm {
     padding: 10px 16px;
     font-size: 18px;
     line-height: 1.3333333;
-    border: 0px
+    border: 0px;
 }
 
 select.input-lg {
